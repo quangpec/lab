@@ -13,7 +13,6 @@ import { Link } from 'react-router-dom';
             </Card>
         );      
 }
-
 class Menu extends Component{
     constructor(props) {
         super(props);
@@ -33,7 +32,6 @@ class Menu extends Component{
                 salaryScale:false,
                 annualLeave:false,
                 overTime:false
-
             }
         }
         this.handleSearch=this.handleSearch.bind(this);
@@ -116,7 +114,7 @@ class Menu extends Component{
             startDate : this.state.startDate,
             image: '/assets/images/alberto.png',
         };
-        const errors= this.validate(this.state.username, this.state.salaryScale, this.state.annualLeave, this.state.overTime);
+        const errors= this.validate(this.state.username, this.state.salaryScale, this.state.annualLeave, this.state.overTime,this.state.doB,this.state.startDate);
         if (this.state.touched.username===true){
             if(errors.username ===''&& errors.salaryScale ===''&& errors.annualLeave ===''&& errors.overTime ===''&& errors.startDate ===''){
                 this.props.parentCallback(newStaff);
@@ -294,15 +292,12 @@ class Menu extends Component{
                             </div>
                         </div>  
                         </Form>
-                    
-                    
                     </ModalBody>
                 </Modal>
                 </div>
             );
     }
 }
-
 export default Menu;
 
   
