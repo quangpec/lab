@@ -37,7 +37,6 @@ class Main extends Component{
     });
 }
   render(){
-  
     const staffsWithId = ({match}) => {
       if (this.state.staffs.length >parseInt(match.params.staffsId,10)){
       return(
