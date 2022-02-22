@@ -58,7 +58,6 @@ class Main extends Component{
              />
       );
       }
-  
     return (
       <div className="App">
           <Header/>
@@ -73,9 +72,6 @@ class Main extends Component{
            <Footer/>
       </div>
     );
-
   }
-  
 }
-
 export default Main;
