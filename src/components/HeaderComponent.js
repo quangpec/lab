@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
   Button, Modal, ModalHeader, ModalBody,
   Form, FormGroup, Input, Label } from 'reactstrap';
-  import { NavLink } from 'react-router-dom';
+import { NavLink,withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+const mapStateToProps = state => {
+    return {
+        isNavOpen: state.isNavOpen,
+        isModalOpen: state.isModalOpen,
+    }
+  }
 class Header extends Component {
    constructor(prop){
      super(prop);
-     this.state = {
-      isNavOpen: false,
-      isModalOpen: false
-      };
+     this.state={
+        isNavOpen: false,
+        isModalOpen: false
+
+     }
+    
       this.toggleNav = this.toggleNav.bind(this);
       this.toggleModal = this.toggleModal.bind(this);
       this.handleLogin = this.handleLogin.bind(this);
@@ -38,7 +47,7 @@ class Header extends Component {
       <div className="container">
                         <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='Ristorante Con Fusion' /></NavbarBrand>
-                        <Collapse isOpen={this.state.isNavOpen} navbar>
+                        <Collapse isOpen={this.props.isNavOpen} navbar>
                             <Nav navbar>
                             <NavItem>
                                 <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
@@ -102,4 +111,5 @@ class Header extends Component {
   }
 }
 
-export default Header;
+
+export default withRouter(connect(mapStateToProps)(Header));
