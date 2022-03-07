@@ -26,10 +26,11 @@ const mapDispatchToProps = dispatch => ({
   fetchPromos: () => dispatch(fetchPromos())
 });
 class Main extends Component{
-  componentDidMount() {
+  componentDidMount() { // lấy dữ liệu từ xa. 
     this.props.fetchDishes();
     this.props.fetchComments();
     this.props.fetchPromos();
+    console.log(this.props);
   }
   render(){
     const HomePage = () => {

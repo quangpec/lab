@@ -100,7 +100,7 @@ class CommentForm extends Component {
 
 }
  
-const DishDetail = () => {
+const DishDetail = (props) => {
     if (props.isLoading) {
         return(
             <div className="container">
