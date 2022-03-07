@@ -9,8 +9,8 @@ import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 
        
- function RenderComment ({comment,addComment,dishId}){
-    const comment1 = comment.map((comment1)=>{
+function RenderComments({comments, postComment, dishId}) {
+    const comment1 = comments.map((comment1)=>{
         return(
             <div>
             <p>{comment1.comment}</p>
@@ -22,7 +22,7 @@ import { baseUrl } from '../shared/baseUrl';
         <div className="col-12 col-md-5 m-1">
             <h4 style={{textAlign: "left"}}>Comments</h4>
                     {comment1}
-                    <CommentForm dishId={dishId} addComment={addComment}/>
+                    <CommentForm dishId={dishId} postComment={postComment} />
         </div>
     )
 }
@@ -49,7 +49,7 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     render() { 
@@ -143,7 +143,7 @@ const DishDetail = (props) => {
                     </CardBody>
                 </Card>
                 </div>
-                <RenderComment comment = {props.comments} addComment= {props.addComment} dishId={props.dish.id}/>
+                <RenderComments comments = {props.comments} postComment= {props.postComment} dishId={props.dish.id}/>
         </div>
         </div>
     );
