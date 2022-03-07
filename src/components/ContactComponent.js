@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem,Button, Row, Col, Label } from 'reactstrap';
-import { Control, Form, Errors, actions } from 'react-redux-form';
+import { Control, Form, Errors} from 'react-redux-form';
 
 class Contact extends Component {
     constructor(props){
@@ -19,9 +19,9 @@ class Contact extends Component {
     }
   
     render() {
-        const required = (val) => val && val.length;
-        const maxLength = (len) => (val) => !(val) || (val.length <= len);
-        const minLength = (len) => (val) => val && (val.length >= len);
+        const required = (val) => val.trim() && val.trim().length;
+        const maxLength = (len) => (val) => !(val.trim()) || (val.trim().length <= len);
+        const minLength = (len) => (val) => val.trim() && (val.trim().length >= len);
         const isNumber = (val) => !isNaN(Number(val));
         const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
             return(
@@ -84,7 +84,7 @@ class Contact extends Component {
                                         show="touched"
                                         messages={{
                                             required: 'Required',
-                                            minLength: 'Must be greater than 2 characters',
+                                            minLength: 'Must be greater than 3 characters',
                                             maxLength: 'Must be 15 characters or less'
                                         }}
                                      />
